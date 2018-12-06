@@ -10,7 +10,11 @@ class Crypto:
     AUTH_TAG_SIZE = 16
 
     @classmethod
-    def decrypt(cls, password, ciphertext):
+    def decrypt(cls, password, encoded_ciphertext):
+        try:
+            ciphertext = b64decode(encoded_ciphertext)
+        except:
+            raise ValueError('Ciphertext must be a base64 encoded string.')
         cls._validate_ciphertext_length(ciphertext)
         key = cls._key_from_cipher(password, ciphertext)
         return cls._decrypt_with_key(key, ciphertext)
@@ -30,18 +34,15 @@ class Crypto:
 
     @classmethod
     def _salt_from_cipher(cls, ciphertext):
-        decoded_ciphertext = b64decode(ciphertext)
-        return decoded_ciphertext[0:cls.PASSWORD_SALT_SIZE]
+        return ciphertext[0:cls.PASSWORD_SALT_SIZE]
 
     @classmethod
     def _iv_from_cipher(cls, ciphertext):
-        decoded_ciphertext = b64decode(ciphertext)
-        return decoded_ciphertext[cls.PASSWORD_SALT_SIZE:cls.PASSWORD_SALT_SIZE + cls.IV_SIZE]
+        return ciphertext[cls.PASSWORD_SALT_SIZE:cls.PASSWORD_SALT_SIZE + cls.IV_SIZE]
 
     @classmethod
     def _encrypted_payload_from_cipher(cls, ciphertext):
-        decoded_ciphertext = b64decode(ciphertext)
-        return decoded_ciphertext[cls.PASSWORD_SALT_SIZE + cls.IV_SIZE:]
+        return ciphertext[cls.PASSWORD_SALT_SIZE + cls.IV_SIZE:]
 
     @classmethod
     def _validate_ciphertext_length(cls, ciphertext):
