@@ -5,12 +5,12 @@ from crypto.key import Key
 
 class KeyTest(unittest.TestCase):
     def test_key_length_is_as_specified(self):
-        self.assertEqual(len(Key.generate('pwd')), 32)
+        self.assertEqual(len(Key.generate('pwd', 12)), 32)
 
     def test_generate_uses_different_salt_every_time(self):
         self.assertNotEqual(
-            Key.generate('weakpassword'),
-            Key.generate('weakpassword')
+            Key.generate('weakpassword', 12),
+            Key.generate('weakpassword', 12)
         )
 
     def test_generate_with_salt_is_deterministic(self):

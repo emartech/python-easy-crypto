@@ -14,4 +14,3 @@ class CryptoTest(unittest.TestCase):
     def test_decrypt_sample(self):
         data = Crypto.decrypt('myweakpassword', 'IuXiWhFZjWew8XM7R/xNXEuN8nyoB3sVrjbj1pMokFQe1Q0l32RpwbFuemPcllaRmOr8UZcaMHs=')
         self.assertEqual(data, 'littlesecretdata')
-

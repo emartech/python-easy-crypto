@@ -4,6 +4,8 @@ from base64 import b64decode
 from key import Key
 
 class Crypto:
+
+    PASSWORD_SALT_SIZE = 12
     IV_SIZE = 12
     AUTH_TAG_SIZE = 16
 
@@ -26,23 +28,23 @@ class Crypto:
         salt = cls._salt_from_cipher(ciphertext)
         return Key.generate_with_salt(password, salt)
 
-    @staticmethod
-    def _salt_from_cipher(ciphertext):
+    @classmethod
+    def _salt_from_cipher(cls, ciphertext):
         decoded_ciphertext = b64decode(ciphertext)
-        return decoded_ciphertext[0:Key.PASSWORD_SALT_SIZE]
+        return decoded_ciphertext[0:cls.PASSWORD_SALT_SIZE]
 
     @classmethod
     def _iv_from_cipher(cls, ciphertext):
         decoded_ciphertext = b64decode(ciphertext)
-        return decoded_ciphertext[Key.PASSWORD_SALT_SIZE:Key.PASSWORD_SALT_SIZE + cls.IV_SIZE]
+        return decoded_ciphertext[cls.PASSWORD_SALT_SIZE:cls.PASSWORD_SALT_SIZE + cls.IV_SIZE]
 
     @classmethod
     def _encrypted_payload_from_cipher(cls, ciphertext):
         decoded_ciphertext = b64decode(ciphertext)
-        return decoded_ciphertext[Key.PASSWORD_SALT_SIZE + cls.IV_SIZE:]
+        return decoded_ciphertext[cls.PASSWORD_SALT_SIZE + cls.IV_SIZE:]
 
     @classmethod
     def _validate_ciphertext_length(cls, ciphertext):
-        min_required_ciphertext_length = Key.PASSWORD_SALT_SIZE + cls.IV_SIZE + cls.AUTH_TAG_SIZE + 1
+        min_required_ciphertext_length = cls.PASSWORD_SALT_SIZE + cls.IV_SIZE + cls.AUTH_TAG_SIZE + 1
         if len(ciphertext) < min_required_ciphertext_length :
             raise ValueError('Ciphertext must be at least ' + str(min_required_ciphertext_length) + ' bytes long.')
