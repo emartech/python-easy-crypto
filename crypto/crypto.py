@@ -1,5 +1,7 @@
+import os
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-from base64 import b64decode
+from base64 import b64decode, b64encode
+
 
 from key import Key
 
@@ -19,6 +21,12 @@ class Crypto:
         key = cls._key_from_cipher(password, ciphertext)
         return cls._decrypt_with_key(key, ciphertext)
 
+    @classmethod
+    def encrypt(cls, password, plaintext):
+        key, salt = Key.generate(password, cls.PASSWORD_SALT_SIZE)
+        ciphertext = cls._encrypt_with_key(key, salt, plaintext)
+        return b64encode(ciphertext)
+
     # private
     @classmethod
     def _decrypt_with_key(cls, key, ciphertext):
@@ -26,6 +34,13 @@ class Crypto:
         iv = cls._iv_from_cipher(ciphertext)
         encrypted_payload = cls._encrypted_payload_from_cipher(ciphertext)
         return aesgcm.decrypt(iv, encrypted_payload, None)
+
+    @classmethod
+    def _encrypt_with_key(cls, key, salt, plaintext):
+        aesgcm = AESGCM(key)
+        iv = os.urandom(cls.IV_SIZE)
+        payload = aesgcm.encrypt(iv, plaintext, None)
+        return salt + iv + payload
 
     @classmethod
     def _key_from_cipher(cls, password, ciphertext):

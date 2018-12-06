@@ -11,7 +11,7 @@ class Key:
     @classmethod
     def generate(cls, password, password_salt_size):
         salt = os.urandom(password_salt_size)
-        return cls.generate_with_salt(password, salt)
+        return cls.generate_with_salt(password, salt), salt
 
     @classmethod
     def generate_with_salt(cls, password, salt):

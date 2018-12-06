@@ -5,7 +5,8 @@ from crypto.key import Key
 
 class KeyTest(unittest.TestCase):
     def test_key_length_is_as_specified(self):
-        self.assertEqual(len(Key.generate('pwd', 12)), 32)
+        key, _ = Key.generate('pwd', 12)
+        self.assertEqual(len(key), 32)
 
     def test_generate_uses_different_salt_every_time(self):
         self.assertNotEqual(

@@ -38,3 +38,13 @@ class CryptoTest(unittest.TestCase):
         data = Crypto.decrypt('myweakpassword', 'IuXiWhFZjWew8XM7R/xNXEuN8nyoB3sVrjbj1pMokFQe1Q0l32RpwbFuemPcllaRmOr8UZcaMHs=')
         self.assertEqual(data, 'littlesecretdata')
 
+    def test_encrypt_returns_different_cipher_with_same_pwd_and_plaintext(self):
+        self.assertNotEqual(
+            Crypto.encrypt('pwd', 'secretdata'),
+            Crypto.encrypt('pwd', 'secretdata')
+        )
+
+    def test_decryption_of_encrypted_data_returns_data(self):
+        plaintext = 'mysecretdata'
+        password = 'mypassword'
+        self.assertEqual(plaintext, Crypto.decrypt(password, Crypto.encrypt(password, plaintext)))
