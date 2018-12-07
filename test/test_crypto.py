@@ -4,7 +4,7 @@ import os
 from base64 import b64encode
 from cryptography.exceptions import InvalidTag
 
-from crypto.crypto import Crypto
+from easycrypto.crypto import Crypto
 
 class CryptoTest(unittest.TestCase):
     def test_decrypt_fails_if_ciphertext_too_short(self):

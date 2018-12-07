@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from crypto.key import Key
+from easycrypto.key import Key
 
 class KeyTest(unittest.TestCase):
     def test_key_length_is_as_specified(self):
