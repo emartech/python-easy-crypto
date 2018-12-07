@@ -9,10 +9,13 @@ jobs:
       install: make install-test
       script: make test
     - stage: deploy
-      provider: pypi
-      distributions: bdist_egg
-      user: emartech
-      password: $PYPI_PASSWORD
-      on:
-        tags: true
+      script: skip
+      python: "3.6"
+      deploy:
+        provider: pypi
+        distributions: bdist_egg
+        user: emartech
+        password: $PYPI_PASSWORD
+        on:
+          tags: true
 
