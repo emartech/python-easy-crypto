@@ -1,16 +1,18 @@
 language: python
-python:
-  - "2.7"
-  - "3.6"
-  - "3.7-dev"
-install: make install-test
-script: make test
-deploy:
-  provider: pypi
-  distributions: bdist_egg
-  user: emartech
-  password: $PYPI_PASSWORD
-  on:
-    tags: true
-    python: "3.6"
+jobs:
+  include:
+    - stage: test
+      python:
+        - "2.7"
+        - "3.6"
+        - "3.7-dev"
+      install: make install-test
+      script: make test
+    - stage: deploy
+      provider: pypi
+      distributions: bdist_egg
+      user: emartech
+      password: $PYPI_PASSWORD
+      on:
+        tags: true
 
