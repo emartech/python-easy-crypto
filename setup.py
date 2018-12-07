@@ -16,9 +16,11 @@ setup(
     install_requires=[
         'cryptography==2.4.2'
     ],
-    tests_require=[
-        'unittest-data-provider==1.0.1'
-    ],
+    extras_require={
+        'dev': [
+            'unittest-data-provider==1.0.1'
+        ]
+    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Programming Language :: Python',
