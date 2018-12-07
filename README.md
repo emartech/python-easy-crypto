@@ -1,5 +1,7 @@
 # EasyCrypto
 
+[![Build Status](https://travis-ci.org/emartech/python-easy-crypto.svg?branch=master)](https://travis-ci.org/emartech/python-easy-crypto)
+
 Provides simple wrappers around Python [cryptography](https://cryptography.io/en/latest/) module. It is secure by default and compatible with [the easy-crypto node module](https://www.npmjs.com/package/@emartech/easy-crypto).
 
 ## Example usage
