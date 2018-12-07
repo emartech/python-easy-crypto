@@ -3,8 +3,8 @@ jobs:
   include:
     - stage: test
       python:
+        - "3.6.5"
         - "2.7"
-        - "3.6"
         - "3.7-dev"
       install: make install-test
       script: make test
