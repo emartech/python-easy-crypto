@@ -15,8 +15,8 @@ class Crypto:
     def decrypt(cls, password, encoded_ciphertext):
         try:
             ciphertext = b64decode(encoded_ciphertext)
-        except:
-            raise ValueError('Ciphertext must be a base64 encoded string.')
+        except TypeError:
+            raise TypeError('Ciphertext must be a base64 encoded string.')
         cls._validate_ciphertext_length(ciphertext)
         key = cls._key_from_cipher(password, ciphertext)
         return cls._decrypt_with_key(key, ciphertext).decode('utf-8')
@@ -41,7 +41,7 @@ class Crypto:
         iv = os.urandom(cls.IV_SIZE)
         try:
             pt_in_bytes = bytes(plaintext, 'utf-8')
-        except:
+        except TypeError:
             pt_in_bytes = bytes(plaintext)
         payload = aesgcm.encrypt(iv, pt_in_bytes, None)
         return salt + iv + payload

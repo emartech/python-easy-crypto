@@ -24,6 +24,6 @@ class Key:
         )
         try:
             pwd_in_bytes = bytes(password, 'utf-8')
-        except:
+        except TypeError:
             pwd_in_bytes = bytes(password)
         return kdf.derive(pwd_in_bytes)
