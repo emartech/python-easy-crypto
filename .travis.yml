@@ -2,11 +2,15 @@ language: python
 jobs:
   include:
     - stage: test
-      python: "2.7", "3.6", "3.7-dev"
+      python:
+      - "2.7"
+      - "3.6"
+      - "3.7-dev"
       install: make install-test
       script: make test
     - stage: deploy
-      script: skip
+      install: true
+      script: true
       python: "3.6"
       deploy:
         provider: pypi
