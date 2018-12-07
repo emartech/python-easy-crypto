@@ -3,7 +3,7 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from base64 import b64decode, b64encode
 
 
-from key import Key
+from .key import Key
 
 class Crypto:
 

@@ -1,1 +1,1 @@
-from crypto import Crypto
+from .crypto import Crypto
