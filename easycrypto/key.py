@@ -22,4 +22,8 @@ class Key:
             iterations = cls.ITERATION_COUNT,
             backend = default_backend()
         )
-        return kdf.derive(password)
+        try:
+            pwd_in_bytes = bytes(password, 'utf-8')
+        except:
+            pwd_in_bytes = bytes(password)
+        return kdf.derive(pwd_in_bytes)

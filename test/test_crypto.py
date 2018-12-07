@@ -11,7 +11,7 @@ class CryptoTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             Crypto.decrypt('password', b64encode(os.urandom(40)))
 
-        self.assertEqual("Ciphertext must be at least 41 bytes long.", context.exception.message)
+        self.assertEqual("Ciphertext must be at least 41 bytes long.", str(context.exception))
 
     def test_decrypt_fails_if_wrong_password(self):
         with self.assertRaises(InvalidTag):
@@ -32,7 +32,7 @@ class CryptoTest(unittest.TestCase):
     def test_decrypt_fails_if_ciphertext_is_not_b64encoded(self):
         with self.assertRaises(ValueError) as context:
             Crypto.decrypt('pwd', 'not a base 64 encoded string')
-        self.assertEqual('Ciphertext must be a base64 encoded string.', context.exception.message)
+        self.assertEqual('Ciphertext must be a base64 encoded string.', str(context.exception))
 
     def test_decrypt_sample(self):
         data = Crypto.decrypt('myweakpassword', 'IuXiWhFZjWew8XM7R/xNXEuN8nyoB3sVrjbj1pMokFQe1Q0l32RpwbFuemPcllaRmOr8UZcaMHs=')
