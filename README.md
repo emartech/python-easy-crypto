@@ -38,3 +38,7 @@ The library is only a thin wrapper of python's own [cryptography](https://crypto
 ## Found a bug? Have a comment?
 
 Please find us, we would love your feedback!
+
+## Release
+
+Tag your commit with x.y.z, then if all tests pass x.y.z version will be released on Pypi.

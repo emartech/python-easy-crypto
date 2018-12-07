@@ -4,7 +4,7 @@ from setuptools import setup
 setup(
     name='easycrypto',
     description='Provides simple wrappers around Python\'s easycrypto implementation.',
-    version='0.2.0',
+    version='1.0.0',
     author='Emarsys Security',
     author_email='security@emarsys.com',
     license='MIT',
@@ -23,7 +23,7 @@ setup(
         ]
     },
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python',
         'Intended Audience :: Developers',
         'Environment :: Plugins',
