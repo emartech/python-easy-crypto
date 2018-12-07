@@ -5,3 +5,9 @@ python:
   - "3.7-dev"
 install: make install-test
 script: make test
+deploy:
+  provider: pypi
+  user: emartech
+  password:
+    secure: "HpQMTQPnjk7EVqSeg/ow06hT3TC6V1FZZgtbtBt9MNi7lEwkskYn8fsr8RCexWMEay9pHMk+ONBtm78L0M2SOr/3aHx2K/9Up7h3+LUxDVQkPdioodQY3am0jyQST32MHVU0SfR4KK1cYDZE/S6gSUL3X+n2eB4E4jFX75NPBhKGqTZgTFusJguMED52LN9D8/w7a/5FFUkGeZVHv2Ly4jEJgcULtqdYXcmcTbx4XHY5/i+3ckEq5i8z0ZH+eJXoy0NEXwek02tqtMI8tEAUQeWS4dwEJX9MtN5tpYM0JnJqK6H2QfFRoQ5Gf0vdHkw6Sca7Ww8HEwg/gXkW//eGsDjHwgLjomdkif8X5M22HS8h2xV6LWkAWT5zDbJtNhy6hZ8/f/fP56Xv1sibYtftDoPncZXB82Aw46QdBeg+U1xuNGWC0+H/YFyxyNvLOPnJDY4WguTYTwTGwpkDtAj516fC7PTkx7cyEWKLYRGLlCDJVbCJXAlzd4rpOwODkHgRm0EmmnT+toyX8jufR/ZLaSvipUHOiXjZ9v6UmKPc3l+xI02BETW9JF/qKVYCwoDZ4hM/7MV9l+mBGuMBHRhN6fegslGyoUSb4VLbkHEl76goAtVLFGSX7kzMh1GOzJltj7lihjoTngGUs1f+ShC+1d5bkCEujJzQ14mUOXFEA30="
+   
