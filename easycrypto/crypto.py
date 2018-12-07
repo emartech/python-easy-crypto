@@ -1,4 +1,5 @@
 import os
+from binascii import Error as BinasciiError
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from base64 import b64decode, b64encode
 
@@ -15,7 +16,7 @@ class Crypto:
     def decrypt(cls, password, encoded_ciphertext):
         try:
             ciphertext = b64decode(encoded_ciphertext)
-        except TypeError:
+        except (TypeError, BinasciiError):
             raise TypeError('Ciphertext must be a base64 encoded string.')
         cls._validate_ciphertext_length(ciphertext)
         key = cls._key_from_cipher(password, ciphertext)
