@@ -4,10 +4,11 @@ from setuptools import setup
 setup(
     name='easycrypto',
     description='Provides simple wrappers around Python\'s easycrypto implementation.',
-    version='0.0.2',
+    version='0.1.0',
     author='Emarsys Security',
     author_email='security@emarsys.com',
     license='MIT',
+    url='https://pypi.org/project/easycrypto/',
     download_url='https://github.com/emartech/python-easy-easycrypto',
     packages=[
         'easycrypto',
