@@ -5,8 +5,14 @@ jobs:
       python: "2.7"
       install: make install-test
       script: make test
-    - python: "3.6"
-    - python: "3.7-dev"
+    - stage:
+      python: "3.6"
+      install: make install-test
+      script: make test
+    - stage:
+      python: "3.7-dev"
+      install: make install-test
+      script: make test
     - stage: deploy
       install: true
       script: true
