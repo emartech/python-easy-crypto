@@ -9,7 +9,7 @@ setup(
     author_email='security@emarsys.com',
     license='MIT',
     url='https://pypi.org/project/easycrypto/',
-    download_url='https://github.com/emartech/python-easy-easycrypto',
+    download_url='https://github.com/emartech/python-easy-crypto',
     packages=[
         'easycrypto',
     ],
