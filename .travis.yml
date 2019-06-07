@@ -17,7 +17,7 @@ jobs:
       python: "3.6"
       deploy:
         provider: pypi
-        distributions: bdist_egg
+        distributions: "bdist_egg bdist_wheel sdist"
         user: emartech
         password: $PYPI_PASSWORD
         on:
