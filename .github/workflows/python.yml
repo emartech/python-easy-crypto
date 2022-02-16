@@ -3,7 +3,8 @@ name: Python
 on:
   push:
     branches: [ master ]
-    tags: [*]
+    tags:
+      - *
   pull_request:
     branches: [ master ]
 
