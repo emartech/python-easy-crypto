@@ -15,7 +15,7 @@ setup(
     ],
     zip_safe=True,
     install_requires=[
-        'cryptography~=2.0'
+        'cryptography~=3.0'
     ],
     extras_require={
         'dev': [
